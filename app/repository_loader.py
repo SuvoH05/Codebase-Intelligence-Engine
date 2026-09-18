@@ -12,8 +12,15 @@ def read_file(file_path):
 
 def load_repo(repo_path):
     repo_path = Path(repo_path)
-    files=find_python_files()
+    files=find_python_files(repo_path)
     repository = []
     for file in files:
-        repository.append(file)
+        content = read_file(file)
+        repository.append({
+            "Path": str(file),
+            "content": content
+            })
+    return repository
+
+
 
