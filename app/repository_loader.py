@@ -1,8 +1,24 @@
 from pathlib import Path
 
+IGNORED_DIRS= {
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules",
+}
+
 def find_python_files(repo_path):
     repo_path = Path(repo_path)
-    return list(repo_path.rglob("*.py"))
+
+    files = []
+
+    for file in repo_path.rglob("*.py"):
+        if any(part in IGNORED_DIRS for part in file.parts):
+            continue
+
+        files.append(file)
+    return files
+
 
 def read_file(file_path):
     file_path = Path(file_path)
