@@ -16,10 +16,12 @@ def load_repo(repo_path):
     repository = []
     for file in files:
         content = read_file(file)
+        
         repository.append({
-            "Path": str(file),
+            "path": str(file),
             "content": content
             })
+    
     return repository
 
 
