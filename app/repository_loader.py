@@ -13,6 +13,12 @@ def find_python_files(repo_path):
     files = []
 
     for file in repo_path.rglob("*.py"):
+
+        # the any() checks if  at least ONE thing in this collection True?, if yes it returns TRUE.
+        # uncompressed loop: (down)
+        # for part in file.parts:
+        #     if part in IGNORED_DIRS:
+        #         ...
         if any(part in IGNORED_DIRS for part in file.parts):
             continue
 
