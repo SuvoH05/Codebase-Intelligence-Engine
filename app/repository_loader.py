@@ -28,9 +28,13 @@ def find_python_files(repo_path):
 
 def read_file(file_path):
     file_path = Path(file_path)
+    # error handling if any files comes thats not utf=8 or cant open
+    try:
+        with open(file_path, "r" , encoding="utf-8") as file:
+            return file.read()
+    except (UnicodeDecodeError,OSError):
+        return None
 
-    with open(file_path, "r" , encoding="utf-8") as file:
-        return file.read()
 
 def load_repo(repo_path):
     repo_path = Path(repo_path)
@@ -38,6 +42,9 @@ def load_repo(repo_path):
     repository = []
     for file in files:
         content = read_file(file)
+
+        if content is None:
+            content
         
         repository.append({
             "path": str(file),
