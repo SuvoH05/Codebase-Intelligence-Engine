@@ -47,7 +47,7 @@ def load_repo(repo_path):
             content
         
         repository.append({
-            "path": str(file),
+            "path": str(file.relative_to(repo_path)),
             "content": content
             })
     
