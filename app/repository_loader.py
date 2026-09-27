@@ -23,7 +23,7 @@ def find_python_files(repo_path):
             continue
 
         files.append(file)
-    return files
+    return sorted(files)
 
 
 def read_file(file_path):
@@ -39,6 +39,12 @@ def read_file(file_path):
 def load_repo(repo_path):
     repo_path = Path(repo_path)
     files=find_python_files(repo_path)
+
+    if not repo_path.is_dir():
+        raise NotADirectoryError(
+            f"Repository directory not found: {repo_path}"
+        )
+    
     repository = []
     for file in files:
         content = read_file(file)
