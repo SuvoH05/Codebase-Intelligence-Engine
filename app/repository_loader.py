@@ -45,6 +45,8 @@ def load_repo(repo_path):
 
         if content is None:
             content
+        if not content.strip():
+            continue
         
         repository.append({
             "path": str(file.relative_to(repo_path)),
