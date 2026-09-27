@@ -13,13 +13,13 @@ def find_python_files(repo_path):
     files = []
 
     for file in repo_path.rglob("*.py"):
-
+        relative_path = file.relative_to(repo_path)
         # the any() checks if  at least ONE thing in this collection True?, if yes it returns TRUE.
         # uncompressed loop: (down)
         # for part in file.parts:
         #     if part in IGNORED_DIRS:
         #         ...
-        if any(part in IGNORED_DIRS for part in file.parts):
+        if any(part in IGNORED_DIRS for part in relative_path.parts):
             continue
 
         files.append(file)
@@ -38,19 +38,19 @@ def read_file(file_path):
 
 def load_repo(repo_path):
     repo_path = Path(repo_path)
-    files=find_python_files(repo_path)
-
     if not repo_path.is_dir():
         raise NotADirectoryError(
             f"Repository directory not found: {repo_path}"
         )
+    files=find_python_files(repo_path)
+
     
     repository = []
     for file in files:
         content = read_file(file)
 
         if content is None:
-            content
+            continue
         if not content.strip():
             continue
         
