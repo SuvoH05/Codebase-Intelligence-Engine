@@ -9,6 +9,6 @@ print(Path.cwd())
 
 # content = read_file("../repositories/sample_repo/main.py")
 # print(content)
-repo = load_repo("repositories/empty_reppo")
+repo = load_repo("repositories/sample_repo")
 pp.pprint(repo)
 
