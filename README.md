@@ -42,7 +42,7 @@ An assistant that can:
 
 ## Roadmap
 
-- [ ] Repository loading / file reading
+- [✅] Repository loading / file reading
 - [ ] Chunking strategy (file / function / class level)
 - [ ] Embedding generation
 - [ ] Vector store integration
