@@ -7,3 +7,4 @@ def nunu(a,b):
 tree = ast.parse("def greet(name):\n    return name")
 
 print(ast.dump(tree,indent=4))
+print(ast.dump(tree.body))
