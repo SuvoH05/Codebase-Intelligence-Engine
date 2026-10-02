@@ -37,6 +37,7 @@ for node in tree.body:
     if isinstance(node, ast.FunctionDef):
         function_code = ast.get_source_segment(source_code,node)
         print(function_code)
+        print(node.name)
 
         print("start line: ", node.lineno)
         print("end line: ", node.end_lineno)
