@@ -36,6 +36,8 @@ def farewell(name):
 # print(ast.dump(tree,indent=4))
 # print(tree.body[1])
 
+chunks = []
+
 for node in tree.body:
     if isinstance(node, ast.FunctionDef):
         function_code = ast.get_source_segment(source_code,node)
@@ -51,9 +53,11 @@ for node in tree.body:
             "end_line": node.end_lineno,
             "code": function_code
         }
+        chunks.append(chunk)
 
         pp.pprint(chunk)
-        
+
+print(chunks)
         
 
 
