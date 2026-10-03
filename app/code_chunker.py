@@ -1,5 +1,6 @@
 
 import ast
+import pprint as pp
 # ast.parse() → parses source code into an AST.
 
 # ast.dump() → displays the AST structure.
@@ -38,12 +39,21 @@ def farewell(name):
 for node in tree.body:
     if isinstance(node, ast.FunctionDef):
         function_code = ast.get_source_segment(source_code,node)
-        print(function_code)
-        print(node.name)
+        # print(node.name)
 
-        print("start line: ", node.lineno)
-        print("end line: ", node.end_lineno)
-        print("end line: ", node.end_lineno)
+        # print("start line: ", node.lineno)
+        # print("end line: ", node.end_lineno)
+        # print(function_code)
+
+        chunk = {
+            "name":node.name,
+            "start_line": node.lineno,
+            "end_line": node.end_lineno,
+            "code": function_code
+        }
+
+        pp.pprint(chunk)
+        
         
 
 
