@@ -44,6 +44,6 @@ for node in tree.body:
         print("start line: ", node.lineno)
         print("end line: ", node.end_lineno)
         print("end line: ", node.end_lineno)
-        print("end line: ", node.end_lineno)
+        
 
 
