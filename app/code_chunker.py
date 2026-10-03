@@ -15,6 +15,8 @@ x = 10
 
 def greet(name):
     return name
+def farewell(name):
+    return f"Goodbye, {name}!"
 """
 )
 source_code = ("""
@@ -40,6 +42,8 @@ for node in tree.body:
         print(node.name)
 
         print("start line: ", node.lineno)
+        print("end line: ", node.end_lineno)
+        print("end line: ", node.end_lineno)
         print("end line: ", node.end_lineno)
 
 
