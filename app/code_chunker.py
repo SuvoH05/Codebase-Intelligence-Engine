@@ -48,6 +48,7 @@ def chunk_code(source_code):
             # print(function_code)
 
             chunk = {
+                "id":f"{node.name}_{node.lineno}",
                 "name":node.name,
                 "start_line": node.lineno,
                 "end_line": node.end_lineno,
@@ -56,9 +57,10 @@ def chunk_code(source_code):
             chunks.append(chunk)
     return chunks
             
-# pp.pprint(chunk_code(source_code))
+pp.pprint(chunk_code(source_code))
+# print(chunk_code(source_code))
 # print(chunks)
         
-chunk_code(source_code)
+# chunk_code(source_code)
 
 
