@@ -9,17 +9,17 @@ import pprint as pp
 
 # tree.body[0].name → gets the first function's name.
 
-tree = ast.parse("""
-import math
+# tree = ast.parse("""
+# import math
 
-x = 10
+# x = 10
 
-def greet(name):
-    return name
-def farewell(name):
-    return f"Goodbye, {name}!"
-"""
-)
+# def greet(name):
+#     return name
+# def farewell(name):
+#     return f"Goodbye, {name}!"
+# """
+# )
 source_code = ("""
 import math
 
@@ -35,29 +35,30 @@ def farewell(name):
 
 # print(ast.dump(tree,indent=4))
 # print(tree.body[1])
+def chunk_code(source_code):
+    chunks = []
+    tree = ast.parse(source_code)
+    for node in tree.body:
+        if isinstance(node, ast.FunctionDef):
+            function_code = ast.get_source_segment(source_code,node)
+            # print(node.name)
 
-chunks = []
+            # print("start line: ", node.lineno)
+            # print("end line: ", node.end_lineno)
+            # print(function_code)
 
-for node in tree.body:
-    if isinstance(node, ast.FunctionDef):
-        function_code = ast.get_source_segment(source_code,node)
-        # print(node.name)
-
-        # print("start line: ", node.lineno)
-        # print("end line: ", node.end_lineno)
-        # print(function_code)
-
-        chunk = {
-            "name":node.name,
-            "start_line": node.lineno,
-            "end_line": node.end_lineno,
-            "code": function_code
-        }
-        chunks.append(chunk)
-
-        pp.pprint(chunk)
-
-print(chunks)
+            chunk = {
+                "name":node.name,
+                "start_line": node.lineno,
+                "end_line": node.end_lineno,
+                "code": function_code
+            }
+            chunks.append(chunk)
+    pp.pprint(chunks)
+            
+# pp.pprint(chunk_code(source_code))
+# print(chunks)
         
+chunk_code(source_code)
 
 
