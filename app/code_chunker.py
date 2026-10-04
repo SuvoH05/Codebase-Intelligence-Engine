@@ -54,7 +54,7 @@ def chunk_code(source_code):
                 "code": function_code
             }
             chunks.append(chunk)
-    pp.pprint(chunks)
+    return chunks
             
 # pp.pprint(chunk_code(source_code))
 # print(chunks)
