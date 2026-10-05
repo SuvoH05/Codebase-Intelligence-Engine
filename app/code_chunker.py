@@ -36,27 +36,30 @@ def chunk_code(source_code):
     print(ast.dump(tree,indent=4))
     for node in tree.body:
         if isinstance(node, ast.ClassDef):
-            print(node.name)
-            print(node.body)
+            for item in node.body:
+                if isinstance(item,ast.FunctionDef):
+                    print(item.name)
+                    method_code = ast.get_source_segment(source_code,item)
+                    print(method_code)
 
             
-    # for node in tree.body:
-    #     if isinstance(node, ast.FunctionDef):
-    #         function_code = ast.get_source_segment(source_code,node)
-    #         # print(node.name)
+    for node in tree.body:
+        if isinstance(node, ast.FunctionDef):
+            function_code = ast.get_source_segment(source_code,node)
+            # print(node.name)
 
-    #         # print("start line: ", node.lineno)
-    #         # print("end line: ", node.end_lineno)
-    #         # print(function_code)
+            # print("start line: ", node.lineno)
+            # print("end line: ", node.end_lineno)
+            # print(function_code)
 
-    #         chunk = {
-    #             "id":f"{node.name}_{node.lineno}",
-    #             "name":node.name,
-    #             "start_line": node.lineno,
-    #             "end_line": node.end_lineno,
-    #             "code": function_code
-    #         }
-    #         chunks.append(chunk)
+            chunk = {
+                "id":f"{node.name}_{node.lineno}",
+                "name":node.name,
+                "start_line": node.lineno,
+                "end_line": node.end_lineno,
+                "code": function_code
+            }
+            chunks.append(chunk)
     return chunks
             
 pp.pprint(chunk_code(source_code))
