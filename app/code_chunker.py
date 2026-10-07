@@ -35,13 +35,11 @@ def chunk_code(source_code):
     tree = ast.parse(source_code)
     print(ast.dump(tree,indent=4))
     for node in tree.body:
-        print("Class: ",node.name)
-        print("Method: ",item.name)
         if isinstance(node, ast.ClassDef):
             for item in node.body:
-                print("Class: ",node.name)
-                print("Method: ",item.name)
                 if isinstance(item,ast.FunctionDef):
+                    print("Class: ",node.name)
+                    print("Method: ",item.name) 
                     print(item.name)
                     method_code = ast.get_source_segment(source_code,item)
                     print(method_code)
