@@ -41,8 +41,17 @@ def chunk_code(source_code):
                     print("Class: ",node.name)
                     print("Method: ",item.name) 
                     print(item.name)
-                    method_code = ast.get_source_segment(source_code,item)
-                    print(method_code)
+                    method_code = ast.get_source_segment(source_code, item)
+                    method_chunk = {
+                    "id": f"{node.name}.{item.name}_{item.lineno}",
+                    "class_name": node.name,
+                    "name": item.name,
+                    "start_line": item.lineno,
+                    "end_line": item.end_lineno,
+                    "code": method_code
+                }
+
+                pp.pprint(method_chunk)
 
 
             
