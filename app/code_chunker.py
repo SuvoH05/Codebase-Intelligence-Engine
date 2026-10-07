@@ -51,7 +51,7 @@ def chunk_code(source_code):
                     "code": method_code
                 }
 
-                pp.pprint(method_chunk)
+                chunks.append(method_chunk)
 
 
             
