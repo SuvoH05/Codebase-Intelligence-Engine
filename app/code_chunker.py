@@ -52,9 +52,7 @@ def chunk_code(source_code):
                 }
 
                 chunks.append(method_chunk)
-
-
-            
+                            
     # for node in tree.body:
     #     if isinstance(node, ast.FunctionDef):
     #         function_code = ast.get_source_segment(source_code,node)
