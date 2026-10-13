@@ -7,5 +7,5 @@ def greet():
         print("checking loop")
         print("checking loop")
         print("checking loop")
-    print("hello gaiss")
+    print("checking outer loop :) ")
 
