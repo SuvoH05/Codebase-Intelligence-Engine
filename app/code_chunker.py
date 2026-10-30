@@ -82,13 +82,12 @@ def chunk_code(source_code):
     return chunks
             
 
-
 chunk_code(source_code)
 
 
 
-# print(chunk_code(source_code))
-# print(chunks)
+print(chunk_code(source_code))
+print(chunks)
 
 
 
