@@ -82,14 +82,12 @@ def chunk_code(source_code):
     # pp.pprint(chunks)
     return chunks
             
-
-
 chunk_code(source_code)
 
 
 
 print(chunk_code(source_code))
-print(chunks)
+print(chunk_code)
 
 
 
